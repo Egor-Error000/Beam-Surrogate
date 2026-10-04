@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "beam-surrogate"
+version = "0.1.0"
+description = "CPU surrogate of a two-solenoid beamline, with Beam Tracing as the calculator"
+requires-python = ">=3.11"
+dependencies = [
+  "beam-tracing",
+  "h5py>=3.10",
+  "numpy>=2.0",
+  "pyyaml>=6.0",
+  "torch",
+  "mlflow>=2.16",
+  "psutil>=6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0",
+]
+
+[project.scripts]
+beam-surrogate-generate = "beam_surrogate.generate:main"
+beam-surrogate-train = "beam_surrogate.train:main"
+beam-surrogate-evaluate = "beam_surrogate.evaluate:main"
+
+[tool.uv.sources]
+beam-tracing = { path = "../Beam Tracing", editable = true }
+torch = { index = "pytorch-cpu" }
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+addopts = "-q"

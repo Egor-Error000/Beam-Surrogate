@@ -1,0 +1,39 @@
+max_cpus: 12
+seed: 104729
+particles_per_batch: 2000
+n_batches: 40
+n_steps: 1200
+field_grid:
+  nr: 300
+  nz: 2000
+ranges:
+  sigma_x: [5.0e-5, 2.0e-4]
+  spread: [5.0e-5, 2.0e-4]
+  J1: [2.49e6, 2.51e6]
+  J2: [2.49e6, 2.51e6]
+  z1: [0.4, 0.4]
+  z2: [1.2, 1.2]
+dataset: data/structured_beam_data.h5
+checkpoint: artifacts/best_beam_model.pth
+training:
+  hidden_dims: [32, 16, 8]
+  epochs: 25
+  batch_size: 2048
+  train_aug_factor: 4
+  base_lr: 0.001
+  weight_decay: 1.0e-5
+  split_seed: 42
+  l_drift: 1.5
+  std_in: 0.001
+  std_out: 0.0001
+  j_ref: 6500000.0
+  z_ref: 1.0
+eval:
+  n_particles: 2000
+  seed: 2024
+  sigma_x: 0.0001
+  spread: 0.0001
+  J1: 2500000.0
+  J2: 2500000.0
+  z1: 0.4
+  z2: 1.2

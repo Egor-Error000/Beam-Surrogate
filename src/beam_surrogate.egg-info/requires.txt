@@ -1,0 +1,10 @@
+beam-tracing
+h5py>=3.10
+numpy>=2.0
+pyyaml>=6.0
+torch
+mlflow>=2.16
+psutil>=6.0
+
+[dev]
+pytest>=8.0
