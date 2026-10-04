@@ -1,4 +1,0 @@
-[console_scripts]
-beam-surrogate-evaluate = beam_surrogate.evaluate:main
-beam-surrogate-generate = beam_surrogate.generate:main
-beam-surrogate-train = beam_surrogate.train:main
